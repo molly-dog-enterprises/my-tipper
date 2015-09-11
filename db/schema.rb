@@ -11,10 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150911165609) do
+ActiveRecord::Schema.define(version: 20150911174546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "fixtures", force: :cascade do |t|
+    t.string   "round"
+    t.integer  "home_id"
+    t.integer  "away_id"
+    t.string   "venue"
+    t.datetime "at"
+    t.integer  "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "fixtures", ["away_id"], name: "index_fixtures_on_away_id", using: :btree
+  add_index "fixtures", ["home_id"], name: "index_fixtures_on_home_id", using: :btree
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "name"
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
