@@ -24,7 +24,7 @@ class Fixture < ActiveRecord::Base
   private
 
   def allowed_to_edit_result_value
-    if fixture.at < Time.now.utc && changed.include?('result')
+    if fixture.at >= Time.now.utc && changed.include?('result')
       errors.add(:result, 'can not yet be edited')
     end
   end

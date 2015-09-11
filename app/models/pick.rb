@@ -5,7 +5,7 @@ class Pick < ActiveRecord::Base
   validate :allowed_to_edit_pick_value?
 
   def allowed_to_edit_pick_value?
-    if fixture.at >= Time.now.utc && changed.include?('pick')
+    if fixture.at <= Time.now.utc && changed.include?('pick')
       errors.add(:pick, 'can no longer be edited')
     end
   end
