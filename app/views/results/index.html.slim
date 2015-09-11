@@ -21,7 +21,9 @@ table.table
           '  v
           = fixture.away.name
           td= current_selection(fixture, fixture.pick(current_user).try(:pick))
-        td.text-center= current_selection(fixture, fixture.picks.average(:pick))
+        td.text-center
+          - if fixture.at < Time.now.utc
+            = current_selection(fixture, fixture.picks.average(:pick))
         td.text-center= fixture.result
         td.text-center= fixture.pick(current_user).score
         td.text-center= fixture.picks.average(:score)
