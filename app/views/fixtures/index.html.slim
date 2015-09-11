@@ -6,20 +6,28 @@
   = link_to 'All games', fixtures_path(display: 'all'), class: "btn #{'selected' if params[:display] == 'all'}", method: 'get'
 br
 br
-table.table
-  - @fixtures_by_round.each do |round, fixtures|
-    tr
-      th
-        ' Round
-        = round
-      th
-      th
-    - fixtures.each do |fixture|
+= form_tag fixtures_path do
+  table.table
+    - @fixtures_by_round.each do |round, fixtures|
       tr
-        td
-          = fixture.home.name
-          '  v
-          = fixture.away.name
-        td= fixture.at
-        td= fixture.venue
-
+        th
+          ' Round
+          = round
+        th
+        th
+        - if current_admin
+          th= submit_tag "Save", class: 'btn'
+      - fixtures.each do |fixture|
+        tr
+          td
+            = fixture.home.name
+            '  v
+            = fixture.away.name
+          td= fixture.at
+          td= fixture.venue
+          - if current_admin
+            td
+              - if fixture.at < Time.now.utc
+                = text_field_tag "fixture[fix-#{fixture.id}]", fixture.result
+              - else
+                ' Pending
