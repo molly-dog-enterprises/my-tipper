@@ -1,0 +1,29 @@
+- content_for :header do
+  p RWC 2015 - Results
+
+table.table
+  - @fixtures_by_round.each do |round, fixtures|
+    tr
+      th
+        ' Round
+        = round
+      th Your Pick
+      th Avg Pick
+      th Result
+      th Your Score
+      th Avg Score
+      th Total Score
+      th Position
+    - fixtures.each do |fixture|
+      tr
+        td
+          = fixture.home.name
+          '  v
+          = fixture.away.name
+          td= current_selection(fixture, fixture.pick(current_user).try(:pick))
+        td.text-center= current_selection(fixture, fixture.picks.average(:pick))
+        td.text-center= fixture.result
+        td.text-center= fixture.pick(current_user).score
+        td.text-center= fixture.picks.average(:score)
+        td.text-center= total_score = @rounds[fixture.id][current_user.id]
+        td.text-center= @rounds[fixture.id].select { |_, s| s < total_score }.count + 1 if fixture.result

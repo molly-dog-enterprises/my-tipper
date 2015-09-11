@@ -4,6 +4,7 @@ p= link_to 'Fixtures', fixtures_path
 
 - if current_user
   p= link_to 'Picks', picks_path
+  p= link_to 'Results', results_path
   p= "Hi #{current_user.name}"
   p= button_to 'logout', '/users', method: 'delete', class: 'btn'
 - else
