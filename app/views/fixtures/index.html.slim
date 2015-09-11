@@ -2,7 +2,7 @@
   p RWC 2015 - Fixtures
 
 .btn-group
-  = link_to 'Future games', fixtures_path(display: 'future'), class: "btn #{'selected' if params[:display] == 'future'}", method: 'get'
+  = link_to 'Future games', fixtures_path, class: "btn #{'selected' unless params[:display] == 'all'}", method: 'get'
   = link_to 'All games', fixtures_path(display: 'all'), class: "btn #{'selected' if params[:display] == 'all'}", method: 'get'
 br
 br

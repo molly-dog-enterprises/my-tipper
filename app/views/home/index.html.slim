@@ -1,9 +1,21 @@
 - content_for :header do
   p RWC 2015
 
-pre
-  - if current_user
-    = current_user.attributes.inspect
-  - else
-    ' No one
+h3 Playing is as easy..
+
+.tile-container
+  .tile.position-1
+    .pos 1
+    .header Guess the winning margin
+    canvas
+
+  .tile.position-2
+    .pos 2
+    .header Watch the game
+    canvas
+
+  .tile.position-3
+    .pos 3
+    .header Score the lowest
+    canvas
 

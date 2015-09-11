@@ -2,9 +2,12 @@
   width: 100%;
   background: white;
   border-radius: 10px;
+  border-radius: 10px 10px 0 0;
 
-  thead {
+  thead, th {
     background: #CCCCCC;
+  }
+  thead {
     border-radius: 10px 10px 0 0;
   }
   td, th {

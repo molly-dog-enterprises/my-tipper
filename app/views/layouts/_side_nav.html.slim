@@ -1,9 +1,10 @@
 
+p= link_to 'How to play', root_path
+p= link_to 'Fixtures', fixtures_path
+
 - if current_user
-  = button_to 'logout', '/users', method: 'delete'
-  = "Hi #{current_user.name}"
+  p= link_to 'Picks', picks_path
+  p= "Hi #{current_user.name}"
+  p= button_to 'logout', '/users', method: 'delete', class: 'btn'
 - else
-  p= link_to 'Sign up', new_user_registration_path
-  /p= link_to 'How to play', ''
-  p= link_to 'Fixtures', fixtures_path(display: 'future')
-  /p= link_to 'Help', '#'
+  p= link_to 'Sign up', new_user_registration_path, class: 'btn'
