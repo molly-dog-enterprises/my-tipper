@@ -1,0 +1,9 @@
+
+- if current_user
+  = button_to 'logout', '/users', method: 'delete'
+  = "Hi #{current_user.name}"
+- else
+  p= link_to 'Sign up', new_user_registration_path
+  /p= link_to 'How to play', ''
+  p= link_to 'Fixtures', '/fixtures'
+  /p= link_to 'Help', '#'

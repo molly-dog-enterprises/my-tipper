@@ -1,0 +1,9 @@
+- content_for :header do
+  p RWC 2015
+
+pre
+  - if current_user
+    = current_user.attributes.inspect
+  - else
+    ' No one
+

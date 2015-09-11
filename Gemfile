@@ -43,3 +43,4 @@ end
 
 gem 'rails_12factor'
 gem 'devise'
+gem 'slim'

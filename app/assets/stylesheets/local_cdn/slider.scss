@@ -1,0 +1,51 @@
+.slider {
+  line-height: 20px;
+}
+.horizontal-slider {
+  width: 300px;
+  height: 10px;
+  border: 1px solid grey;
+  &:before {
+    content: '';
+    left: 150px;
+    width: 0px;
+    height: 18px;
+    top: -6px;
+    border: solid 1px red;
+    position: absolute;
+  }
+}
+
+.handle {
+  font-size: 0.9em;
+  text-align: center;
+  cursor: pointer;
+
+  &.handle-1 { //score
+    background-color: #444;
+    top: -4px;
+    width: 8px;
+    height: 16px;
+    line-height: 16px;
+    border-radius: 4px;
+  }
+  &.handle-0 { //pick
+    background-color: #5a8048;
+    top: -2px;
+    width: 12px;
+    height: 12px;
+    line-height: 12px;
+    border-radius: 6px;
+    border: solid 1px white;
+    z-index: 100 !important;
+  }
+}
+
+.handle.active {
+  background-color: grey;
+}
+
+.bar {
+  position: relative;
+  background: #ddd;
+}

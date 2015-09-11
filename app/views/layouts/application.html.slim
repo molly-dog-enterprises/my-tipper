@@ -1,0 +1,23 @@
+doctype html
+html lang="en"
+head
+  meta charset="utf-8"
+
+  /= javascript_include_tag "local_cdn/react-0.12.2", "local_cdn/JSXTransformer-0.12.2", "local_cdn/fluxxor"
+  /javascript:
+  /  window.MDE = {};
+  = javascript_include_tag "application"
+  = stylesheet_link_tag "application", media: "all"
+  = csrf_meta_tags
+
+body.container
+  header
+    = yield :header
+  p.notice= notice
+  p.alert= alert
+
+  section.columns
+    .four-fifths.column
+      = yield
+    .one-fifth.column
+      = render 'layouts/side_nav'

@@ -1,0 +1,57 @@
+$emblem-width: 46px;
+$emblem-height: 25px;
+
+$emblem-offset-right: -50px;
+$emblem-offset-top: -30px;
+
+$emblem-right: -15px;
+$emblem-top: -25px;
+
+
+
+.emblem {
+  width: $emblem-width; // 128 px
+  height: $emblem-height; // 90 px
+}
+
+.emblem-2011 {
+  content: ' ';
+  background: url(Flags-of-the-world.jpg) no-repeat left top;
+
+  background-position: ($emblem-right + 0 * $emblem-offset-right) ($emblem-top + 0 * $emblem-offset-top);
+
+//  &.wales {
+//    background-position: ($emblem-right + 0 * $emblem-offset-right) ($emblem-top + 0 * $emblem-offset-top);
+//  }
+  &.australia {
+    background-position: ($emblem-right + 6 * $emblem-offset-right) ($emblem-top + 0 * $emblem-offset-top);
+  }
+
+  &.canada {
+    background-position: ($emblem-right + 9 * $emblem-offset-right) ($emblem-top + 1 * $emblem-offset-top);
+  }
+
+  &.france {
+    background-position: ($emblem-right + 3 * $emblem-offset-right) ($emblem-top + 3 * $emblem-offset-top);
+  }
+
+  &.england {
+    background-position: ($emblem-right + 11 * $emblem-offset-right) ($emblem-top + 2 * $emblem-offset-top);
+  }
+
+  &.tonga {
+    background-position: ($emblem-right + 9 * $emblem-offset-right) ($emblem-top + 10 * $emblem-offset-top);
+  }
+
+  &.japan {
+    background-position: ($emblem-right + 0 * $emblem-offset-right) ($emblem-top + 5 * $emblem-offset-top);
+  }
+//  &.new-zealand {
+//    background-position: -3*$emblem-width 0;
+//  }
+//  &.south-africa {
+//    background-position: -3*$emblem-width -3*$emblem-height;
+//  }
+}
+
+

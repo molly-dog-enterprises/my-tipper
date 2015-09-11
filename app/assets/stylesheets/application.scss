@@ -1,0 +1,30 @@
+$body-color: #AADAE3;
+
+@import 'local_cdn/primer-css/scss/primer';
+//@import 'local_cdn/slider';
+@import 'modules/emblems';
+@import 'modules/typo';
+@import 'modules/table';
+@import 'modules/layout';
+
+body {
+  background: $body-color;
+}
+.menu-item a {
+  display: block;
+}
+// errors/what errors??
+.errors {
+  font-size: 10px;
+  color: red;
+}
+// need to work out how to format/display bulk content on teh screen..
+.copy-content {
+  white-space: pre-line;
+
+  blockquote {
+    margin: 10px 0;
+    text-align: right;
+  }
+
+}
