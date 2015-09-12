@@ -2,7 +2,7 @@ class PicksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    fixtures = Fixture.includes(:home, :away).order(:at)
+    fixtures = Fixture.includes({home: :team}, {away: :team}).order(:at)
     fixtures = fixtures.where(['at > ?', Time.now.utc]) unless params[:display] == 'all'
 
     @fixtures_by_round = fixtures.all.group_by(&:round)

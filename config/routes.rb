@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :fixtures
   resources :picks
   resources :results
+  resources :team_wrappers
 
   resource :user do
     post :fixtures

@@ -1,6 +1,6 @@
 class Fixture < ActiveRecord::Base
-  belongs_to :home, class_name: 'Team'
-  belongs_to :away, class_name: 'Team'
+  belongs_to :home, class_name: 'TeamWrapper'
+  belongs_to :away, class_name: 'TeamWrapper'
   has_many :picks
 
   validate :allowed_to_edit_result_value?
@@ -23,8 +23,8 @@ class Fixture < ActiveRecord::Base
 
   private
 
-  def allowed_to_edit_result_value
-    if fixture.at >= Time.now.utc && changed.include?('result')
+  def allowed_to_edit_result_value?
+    if at >= Time.now.utc && changed.include?('result')
       errors.add(:result, 'can not yet be edited')
     end
   end

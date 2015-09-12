@@ -23,7 +23,7 @@ $box-size: 240px;
 
       .img:before {
         content: '';
-        background: url("homepage-step-1.png");
+        background: image-url("homepage-step-1");
         background-size: cover;
         display: block;
         width: 200px;

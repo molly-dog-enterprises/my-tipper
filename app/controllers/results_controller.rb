@@ -2,7 +2,7 @@ class ResultsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    fixtures = Fixture.includes(:home, :away, :picks).order(:at)
+    fixtures = Fixture.includes({home: :team}, {away: :team}, :picks).order(:at)
     # fixtures = fixtures.where(['at < ?', Time.now.utc])
     fixtures = fixtures.all
 

@@ -1,0 +1,26 @@
+- content_for :header do
+  | Picks
+
+.btn-group
+  = link_to 'Future games', picks_path, class: "btn #{'selected' unless params[:display] == 'all'}", method: 'get'
+  = link_to 'All games', picks_path(display: 'all'), class: "btn #{'selected' if params[:display] == 'all'}", method: 'get'
+br
+br
+= form_tag team_wrappers_path do
+  table.table#picks
+    - @wrappers_by_round.each do |round, wrappers|
+      tr
+        th style="width: 20%"
+          - if round =~ /^\d+$/
+            ' Round
+          = round
+        th
+        th style="width: 20%"
+          = submit_tag 'Save', class: 'btn'
+      - wrappers.sort_by(&:name).each do |wrapper|
+        tr
+          td= wrapper.name
+          td= select_tag "wrappers[item_#{wrapper.id}]", options_for_select([["<- Please select one ->", nil]] + Team.all.pluck(:name, :id), wrapper.team_id)
+
+
+

@@ -5,7 +5,8 @@ table.table
   - @fixtures_by_round.each do |round, fixtures|
     tr
       th
-        ' Round
+        - if round =~ /^\d+$/
+          ' Round
         = round
       th Your Pick
       th Avg Pick

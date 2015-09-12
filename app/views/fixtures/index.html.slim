@@ -10,8 +10,9 @@ br
   table.table
     - @fixtures_by_round.each do |round, fixtures|
       tr
-        th
-          ' Round
+        th style="width: 240px"
+          - if round =~ /^\d+$/
+            ' Round
           = round
         th
         th
@@ -28,6 +29,6 @@ br
           - if current_admin
             td
               - if fixture.at < Time.now.utc
-                = text_field_tag "fixture[fix-#{fixture.id}]", fixture.result
+                = text_field_tag "fixture[fix_#{fixture.id}]", fixture.result
               - else
                 ' Pending

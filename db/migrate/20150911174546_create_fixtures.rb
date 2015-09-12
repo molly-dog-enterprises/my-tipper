@@ -25,7 +25,7 @@ class CreateFixtures < ActiveRecord::Migration
       h, a = teams.split(/\s+v\s+/)
       home = Team.find_or_create_by(name: h)
       away = Team.find_or_create_by(name: a)
-      Fixture.find_or_create_by(home: home, away: away, venue: loc, at: Time.parse(time).utc, round: round)
+      Fixture.find_or_create_by(home_id: home.id, away_id: away.id, venue: loc, at: Time.parse(time).utc, round: round)
     end
   end
 end

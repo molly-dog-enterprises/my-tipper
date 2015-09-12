@@ -11,7 +11,8 @@ br
     - @fixtures_by_round.each do |round, fixtures|
       tr
         th style="width: 20%"
-          ' Round
+          - if round =~ /^\d+$/
+            ' Round
           = round
         th
         th style="width: 20%"
