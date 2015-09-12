@@ -1,5 +1,6 @@
 class TeamWrapper < ActiveRecord::Base
   belongs_to :team
+  has_many :fixtures
 
   def name
     names = [

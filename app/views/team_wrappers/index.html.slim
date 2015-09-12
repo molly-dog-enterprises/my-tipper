@@ -1,11 +1,6 @@
 - content_for :header do
   | Picks
 
-.btn-group
-  = link_to 'Future games', picks_path, class: "btn #{'selected' unless params[:display] == 'all'}", method: 'get'
-  = link_to 'All games', picks_path(display: 'all'), class: "btn #{'selected' if params[:display] == 'all'}", method: 'get'
-br
-br
 = form_tag team_wrappers_path do
   table.table#picks
     - @wrappers_by_round.each do |round, wrappers|

@@ -2,8 +2,9 @@ class TeamWrappersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-
-    @wrappers_by_round = TeamWrapper.where.not(name: nil).group_by {|w| w.fixture.round }
+    wrappers = TeamWrapper.where.not(name: nil)
+    wrappers = wrappers.includes(:fixtures).where(fixtures: {event: event})
+    @wrappers_by_round = wrappers.group_by {|w| w.fixture.round }
   end
 
   def create
@@ -14,6 +15,6 @@ class TeamWrappersController < ApplicationController
 
       TeamWrapper.find(wrapper_id).update_attributes(team_id: value)
     end
-    redirect_to team_wrappers_path
+    redirect_to team_wrappers_path(event: params[:event])
   end
 end

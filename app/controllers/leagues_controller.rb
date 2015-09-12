@@ -19,7 +19,7 @@ class LeaguesController < ApplicationController
     @league = League.find_by(code: params[:id])
     if @league.password.blank? || @league.password == params[:password]
       @league.players.create(user_id: current_user.id)
-      redirect_to leagues_path
+      redirect_to leagues_path(event: params[:event])
     else
       render :password
     end
@@ -32,7 +32,7 @@ class LeaguesController < ApplicationController
   def create
     @league = League.new(params.require(:league).permit(:name, :public, :password))
     if @league.create(current_user)
-      redirect_to leagues_path, highlight: @league.id
+      redirect_to leagues_path(highlight: @league.id, event: params[:event])
     else
       render :new
     end
@@ -42,7 +42,7 @@ class LeaguesController < ApplicationController
     @league = League.find(params[:id])
     if @league.password.blank? || @league.password == params[:password]
       @league.players.create(user_id: current_user.id)
-      redirect_to leagues_path
+      redirect_to leagues_path(event: params[:event])
     else
       flash[:error] = 'Invalid password' if params[:password]
       render :password
@@ -54,6 +54,6 @@ class LeaguesController < ApplicationController
       league_id: params[:id],
       user_id: current_user.id
     ).delete_all
-    redirect_to leagues_path
+    redirect_to leagues_path(event: params[:event])
   end
 end

@@ -3,6 +3,7 @@ class FixturesController < ApplicationController
 
   def index
     fixtures = Fixture.includes({home: :team}, {away: :team}).order(:at)
+    fixtures = fixtures.where(event: event)
     fixtures = fixtures.where(['at > ?', Time.now.utc]) if params[:display] == 'future'
 
     @fixtures_by_round = fixtures.all.group_by(&:round)
@@ -16,6 +17,6 @@ class FixturesController < ApplicationController
 
       Fixture.find(fixture_id).update_score(value)
     end
-    redirect_to fixtures_path
+    redirect_to fixtures_path(event: params[:event])
   end
 end

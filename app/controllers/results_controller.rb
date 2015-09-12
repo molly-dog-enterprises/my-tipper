@@ -3,6 +3,7 @@ class ResultsController < ApplicationController
 
   def index
     fixtures = Fixture.includes({home: :team}, {away: :team}, :picks).order(:at)
+    fixtures = fixtures.where(event: event)
     # fixtures = fixtures.where(['at < ?', Time.now.utc])
     fixtures = fixtures.all
 
