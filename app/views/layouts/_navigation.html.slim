@@ -6,7 +6,7 @@
       li= link_to 'logout', '/users/sign_out', method: 'delete'
     - elsif current_admin
       li= "ADMIN"
-      li= link_to 'logout', '/admin/sign_out', method: 'delete'
+      li= link_to 'logout', '/admins/sign_out', method: 'delete'
     - else
       li= link_to 'Admin', new_admin_session_path
       li= link_to 'Sign in', new_user_session_path
@@ -18,6 +18,7 @@
 
     - if current_user
       li= link_to 'Picks', picks_path
+      li= link_to 'Leagues', leagues_path
       li= link_to 'Results', results_path
     - if current_admin
       li= link_to 'Team wrappers', team_wrappers_path

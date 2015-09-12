@@ -3,6 +3,7 @@ class Pick < ActiveRecord::Base
   belongs_to :fixture
 
   validate :allowed_to_edit_pick_value?
+  validates_uniqueness_of :user_id, scope: :fixture_id
 
   def allowed_to_edit_pick_value?
     if fixture.at <= Time.now.utc && changed.include?('pick')

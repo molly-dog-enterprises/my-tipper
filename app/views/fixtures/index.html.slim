@@ -2,8 +2,8 @@
   | Fixtures
 
 .btn-group
-  = link_to 'Future games', fixtures_path, class: "btn #{'selected' unless params[:display] == 'all'}", method: 'get'
-  = link_to 'All games', fixtures_path(display: 'all'), class: "btn #{'selected' if params[:display] == 'all'}", method: 'get'
+  = link_to 'Future games', fixtures_path, class: "btn #{'selected' unless params[:display] == 'all'}"
+  = link_to 'All games', fixtures_path(display: 'all'), class: "btn #{'selected' if params[:display] == 'all'}"
 br
 br
 = form_tag fixtures_path do

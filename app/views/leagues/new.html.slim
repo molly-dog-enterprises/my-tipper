@@ -1,0 +1,15 @@
+h3 Create a new league
+
+= simple_form_for @league do |f|
+  .field
+    = f.input :name, placeholder: 'League name'
+  br
+  .field
+    = f.input :password, type: 'password', placeholder: 'Optional'
+  br
+  .field
+    = f.label :public do
+      = f.check_box :public
+      |  Public
+  br
+  = f.submit 'Create League'

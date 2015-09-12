@@ -1,0 +1,32 @@
+- content_for :header do
+  | Leagues
+
+.btn-group
+  = link_to 'Create league', new_league_path, class: "btn"
+br
+br
+table.table
+  thead
+    tr
+      th Name
+      th Players
+      th Private
+      th Password
+      th
+      th
+  tbody
+    - @leagues.each do |league|
+      tr
+        td= league.name
+        td.text-center= league.player_count
+        td.text-center= "Yes" unless league.public?
+        td.text-center= "Yes" if league.password.present?
+        td
+          - if @members[league.id]
+            = link_to "Leave", league_path(league), method: 'delete'
+          - else
+            = link_to "Join", league_path(league), method: 'put'
+        td= link_to "Invite URL", '#', onclick: "$('#invite-#{league.id}').toggle(); return false;"
+      tr id="invite-#{league.id}" style='display: none'
+        td colspan=5
+          = league_url(league.code)

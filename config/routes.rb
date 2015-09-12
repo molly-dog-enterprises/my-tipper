@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :picks
   resources :results
   resources :team_wrappers
+  resources :leagues
 
   resource :user do
     post :fixtures
