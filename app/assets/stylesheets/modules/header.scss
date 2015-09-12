@@ -1,0 +1,68 @@
+header {
+  padding: 20px 0 0;
+
+  h1 {
+    font-size: 40px;
+    display: inline-block;
+    padding: 10px;
+    line-height: 16px;
+    vertical-align: top;
+  }
+  .mde-image {
+    display: inline-block;
+
+    &:before {
+      content: '';
+      background-image: image_url('mde');
+      width: 60px;
+      height: 60px;
+      display: block;
+      background-size: cover;
+    }
+    &:after {
+      content: "Molly Dog Enterprises";
+      font-size: 6px;
+      position: relative;
+      top: -14px;
+    }
+  }
+
+
+}
+
+.navigation {
+  height: 30px;
+  padding: 4px 0;
+  background-color: #111;
+  color: #9b9daa;
+  font-weight: bold;
+
+  ul {
+    position: relative;
+    top: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+
+    li {
+      display: inline-block;
+      padding: 3px 10px;
+
+      border-right: solid 1px #555;
+
+      &:last-child {
+        border-right: none;
+      }
+
+      a, a:visited {
+        color: white;
+      }
+      a:hover {
+        color: #ddd;
+        text-decoration: none;
+      }
+
+    }
+  }
+}

@@ -1,5 +1,5 @@
 - content_for :header do
-  p RWC 2015 - Picks
+  | Picks
 
 .btn-group
   = link_to 'Future games', picks_path, class: "btn #{'selected' unless params[:display] == 'all'}", method: 'get'
@@ -26,7 +26,7 @@ br
             .pick
             = hidden_field_tag "home_#{fixture.id}", fixture.home.name, class: 'home'
             = hidden_field_tag "away_#{fixture.id}", fixture.away.name, class: 'away'
-            = hidden_field_tag "picks[fix_#{fixture.id}]", fixture.pick(current_user).pick, class: 'amount'
+            = hidden_field_tag "picks[fix_#{fixture.id}]", @pick[fixture.id], class: 'amount'
           td
             = fixture.away.name
 

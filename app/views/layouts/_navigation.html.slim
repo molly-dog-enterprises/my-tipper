@@ -1,0 +1,17 @@
+.navigation
+
+  ul.align-right
+    - if current_user
+      li= "Hi #{current_user.name}"
+      li= link_to 'logout', '/users/sign_out', method: 'delete'
+    - else
+      li= link_to 'Sign in', new_user_session_path
+      li= link_to 'Sign up', new_user_registration_path
+
+  ul
+    li= link_to 'How to play', root_path
+    li= link_to 'Fixtures', fixtures_path
+
+    - if current_user
+      li= link_to 'Picks', picks_path
+      li= link_to 'Results', results_path

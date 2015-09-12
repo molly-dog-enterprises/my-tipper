@@ -2,10 +2,11 @@ class PicksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    fixtures = Fixture.includes(:home, :away, :picks).order(:at)
+    fixtures = Fixture.includes(:home, :away).order(:at)
     fixtures = fixtures.where(['at > ?', Time.now.utc]) unless params[:display] == 'all'
 
     @fixtures_by_round = fixtures.all.group_by(&:round)
+    @pick = Pick.where(user_id: 2).group(:fixture_id).maximum(:pick) # returns hash of {fixture_id => pick_value}
   end
 
   def create

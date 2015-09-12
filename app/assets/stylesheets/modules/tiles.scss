@@ -20,6 +20,21 @@ $box-size: 240px;
       top: 10px;
       rotation: 30;
       transform: rotate(-5deg);
+
+      .img:before {
+        content: '';
+        background: url("homepage-step-1.png");
+        background-size: cover;
+        display: block;
+        width: 200px;
+        height: 150px;
+        -webkit-filter: blur(1px);
+        -moz-filter: blur(1px);
+        -o-filter: blur(1px);
+        -ms-filter: blur(1px);
+        filter: blur(1px);
+        margin: 25px 0;
+      }
     }
 
     &.position-2 {
