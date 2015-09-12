@@ -45,3 +45,5 @@ gem 'rails_12factor'
 gem 'devise'
 gem 'slim'
 gem 'simple_form'
+gem 'browser-timezone-rails'
+

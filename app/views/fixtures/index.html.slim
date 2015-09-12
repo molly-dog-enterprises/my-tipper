@@ -24,7 +24,7 @@ br
             = fixture.home.name
             '  v
             = fixture.away.name
-          td= fixture.at
+          td= fixture.at.strftime('%d %b %y, %l:%M%P')
           td= fixture.venue
           - if current_admin
             td
