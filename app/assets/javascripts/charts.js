@@ -1,15 +1,11 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file.
-//
-// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
-// about supported directives.
-//
-//= require jquery
-//= require jquery_ujs
-//= require ./jquery-ui.min
+//= require plugins/amcharts/amcharts
+//= require plugins/amcharts/serial
+//= require plugins/amcharts/pie
+//= require plugins/amcharts/themes/light
+//= require plugins/amcharts/plugins/dataloader/dataloader
+//= require plugins/amcharts/plugins/export/export
+//= require plugins/amcharts/plugins/export/libs/jszip/jszip.js
+//= require plugins/amcharts/plugins/export/libs/pdfmake/pdfmake.js
+//= require plugins/amcharts/plugins/export/libs/pdfmake/vfs_fonts.js
+//= require plugins/amcharts/plugins/export/libs/fabric.js/fabric.js
+//= require plugins/amcharts/plugins/export/libs/FileSaver.js/FileSaver.js
