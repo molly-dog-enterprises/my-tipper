@@ -18,6 +18,7 @@ body.container
       - if content_for :header
         '  -
         = yield :header
+  = render 'layouts/next_game'
   = render 'layouts/navigation'
   /p.notice= notice
   p.alert= alert
