@@ -15,7 +15,7 @@ class FixturesController < ApplicationController
 
       fixture_id = fixture.split('_').last.to_i
 
-      Fixture.find(fixture_id).update_score(value)
+      Fixture.find(fixture_id).update_result(value)
     end
     redirect_to fixtures_path(event: params[:event])
   end

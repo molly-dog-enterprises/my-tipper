@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150912230856) do
+ActiveRecord::Schema.define(version: 20150913211130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150912230856) do
   end
 
   add_index "fixtures", ["away_id"], name: "index_fixtures_on_away_id", using: :btree
+  add_index "fixtures", ["event"], name: "index_fixtures_on_event", using: :btree
   add_index "fixtures", ["home_id"], name: "index_fixtures_on_home_id", using: :btree
 
   create_table "leagues", force: :cascade do |t|

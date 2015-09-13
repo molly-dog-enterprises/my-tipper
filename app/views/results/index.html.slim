@@ -25,8 +25,8 @@ table.table
         td.text-center
           - if fixture.at < Time.now.utc
             = current_selection(fixture, fixture.picks.average(:pick))
-        td.text-center= fixture.result
+        td.text-center= current_selection(fixture, fixture.result, force: true) if fixture.result
         td.text-center= fixture.pick(current_user).score
-        td.text-center= fixture.picks.average(:score)
+        td.text-center= fixture.picks.average(:score).try(:round, 1)
         td.text-center= total_score = @rounds[fixture.id][current_user.id]
         td.text-center= @rounds[fixture.id].select { |_, s| s < total_score }.count + 1 if fixture.result

@@ -6,10 +6,10 @@ class Fixture < ActiveRecord::Base
   validate :allowed_to_edit_result_value?
 
   def pick(user)
-    picks.detect{ |p| p.user_id = user.id } || Pick.new
+    picks.detect{ |p| p.user_id == user.id } || Pick.new
   end
 
-  def update_score(result)
+  def update_result(result)
     Fixture.transaction do
       self.result = result
       self.save!
@@ -31,9 +31,11 @@ class Fixture < ActiveRecord::Base
 
   def score_for(pick, result)
     if pick == 0 # player must pick a score
-      result + 20
+      result.abs + 20
     elsif pick == result
       return -10
+    elsif result == 0 # player must pick a score
+      pick.abs
     elsif (pick / pick.abs) == (result / result.abs)
       (pick - result).abs
     else

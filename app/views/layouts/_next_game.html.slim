@@ -1,11 +1,11 @@
-#next-game
-  - fixture = Fixture.where(event: event).order(:at).where(['at > ?', Time.now]).first
-  ' Next Game:
-  = fixture.home.name
-  '  v
-  = fixture.away.name
-  '  -
-  #next-game-in style='display: inline-block' data={at: fixture.at.to_i}
+- if (fixture = Fixture.where(event: event).order(:at).where(['at > ?', Time.now]).first)
+  #next-game
+    ' Next Game:
+    = fixture.home.name
+    '  v
+    = fixture.away.name
+    '  -
+    #next-game-in style='display: inline-block' data={at: fixture.at.to_i}
 
 
 javascript:

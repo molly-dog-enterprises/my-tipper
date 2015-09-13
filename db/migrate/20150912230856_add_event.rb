@@ -2,7 +2,7 @@ class AddEvent < ActiveRecord::Migration
   def change
     add_column :fixtures, :event, :string
     Fixture.update_all(event: '2015')
-
+    Fixture.reset_column_information
     build_round(1, File.read(Rails.root.join('db/migrate/data/round-1')))
 
   end
