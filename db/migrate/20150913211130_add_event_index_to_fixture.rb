@@ -27,7 +27,6 @@ class AddEventIndexToFixture < ActiveRecord::Migration
       match, email, name, pick = row.split(/\s+\|\s+/)
       u = User.find_by(email: email, name: name) ||
         User.create!(email: email, name: name, password: 'please-change-me', password_confirmation: 'please-change-me')
-      binding.pry if name == "David" and match == "Australia v Italy"
       f_id = matches[match]
       p = Pick.find_or_initialize_by(
         user_id: u.id,
