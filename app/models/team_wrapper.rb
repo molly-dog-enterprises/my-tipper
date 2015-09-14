@@ -2,6 +2,8 @@ class TeamWrapper < ActiveRecord::Base
   belongs_to :team
   has_many :fixtures
 
+  delegate :short_name, to: :team, allow_nil: true
+
   def name
     names = [
       attributes["name"],
