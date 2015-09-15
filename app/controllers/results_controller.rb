@@ -19,9 +19,12 @@ class ResultsController < ApplicationController
           keys.delete(pick.user_id)
         end
         keys.each { |k| results[k] += 20 } # make up for missed round
+        @rounds[fixture.id] = results.dup
+      else
+        @rounds[fixture.id] = Hash.new(nil)
       end
 
-      @rounds[fixture.id] = results.dup
+
     end
 
     @fixtures_by_round = fixtures.group_by(&:round)

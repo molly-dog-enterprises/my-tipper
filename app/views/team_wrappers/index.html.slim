@@ -1,7 +1,7 @@
 - content_for :header do
   | Picks
 
-= form_tag team_wrappers_path do
+= form_tag team_wrappers_path(event: params[:event]) do
   table.table#picks
     - @wrappers_by_round.each do |round, wrappers|
       tr
