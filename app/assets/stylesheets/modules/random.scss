@@ -1,3 +1,20 @@
 .incorrect-pick {
   color: red;
 }
+
+.place-change {
+  .up {
+    color: green;
+    &:before {
+      content: '\25B2';
+    }
+
+  }
+
+  .down {
+    color: red;
+    &:before {
+      content: '\25BC';
+    }
+  }
+}

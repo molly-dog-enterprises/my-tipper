@@ -11,6 +11,7 @@ $body-color: #AADAE3;
 @import 'modules/header';
 @import 'modules/layout';
 @import 'modules/random';
+@import 'modules/navigation';
 
 body {
   background: $body-color;

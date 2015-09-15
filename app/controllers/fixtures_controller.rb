@@ -19,4 +19,10 @@ class FixturesController < ApplicationController
     end
     redirect_to fixtures_path(event: params[:event])
   end
+
+  def show
+    @fixture = Fixture.find(params[:id])
+    @points = Fixture.where(event: @fixture.event).where(['fixtures.at <= ?', @fixture.at]).includes(:picks).group(:user_id).order('sum(picks.score)').sum('picks.score')
+    @prev_points = Fixture.where(event: @fixture.event).where(['fixtures.at < ?', @fixture.at]).includes(:picks).group(:user_id).order('sum(picks.score)').sum('picks.score')
+  end
 end

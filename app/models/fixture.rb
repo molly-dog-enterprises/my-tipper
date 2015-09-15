@@ -4,6 +4,11 @@ class Fixture < ActiveRecord::Base
   has_many :picks
 
   validate :allowed_to_edit_result_value?
+  def self.last_fixture
+    where(['at < ?', Time.now])
+    .order('at desc')
+    .first
+  end
 
   def pick(user)
     picks.detect{ |p| p.user_id == user.id } || Pick.new

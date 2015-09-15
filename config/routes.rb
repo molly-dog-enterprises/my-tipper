@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   resources :fixtures
   resources :picks
-  resources :results
+  resources :results do
+    collection { get :leaderboard }
+  end
   resources :team_wrappers
   resources :leagues
 

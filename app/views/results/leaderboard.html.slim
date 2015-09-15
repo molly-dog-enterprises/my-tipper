@@ -1,0 +1,20 @@
+- content_for :header do
+  | Results
+
+table.table
+  tr
+    th Competitor
+    th Points
+    th Point in last round
+    th Position
+    th Change since last round
+  - @users.each do |user|
+    tr
+      td= link_to user.name, results_path(user: user.id, event: event)
+      td.text-center= @points[user.id]
+      td.text-center= @points[user.id] - @prev_points[user.id]
+      td.text-center= @points.values.index(@points[user.id]) + 1
+      - change = @points.values.index(@points[user.id]) - (@prev_points.values.index(@prev_points[user.id]) || 0)
+      td.text-center.place-change
+        span class=(change == 0 ? '' : (change > 0 ? 'down' : 'up'))
+          = change
