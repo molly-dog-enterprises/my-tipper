@@ -44,4 +44,4 @@
         - change = @points.values.index(@points[pick.user_id]) - (@prev_points.values.index(@prev_points[pick.user_id]) || 0)
         td.text-center.place-change
           span class=(change == 0 ? '' : (change > 0 ? 'down' : 'up'))
-            = change
+            = change.abs
