@@ -14,7 +14,10 @@ class Fixture < ActiveRecord::Base
       self.result = result
       self.save!
 
-      picks.each do |pick|
+      users_without_picks = User.pluck(:id) - User.joins(picks: :fixture).where(fixtures: {id: id}).pluck(:id)
+      users_without_picks.each {|u| picks.create!(user_id: u, pick: 0, force_write: true)}
+
+      picks.reload.each do |pick|
         pick.score = score_for(pick.pick, result)
         pick.save!
       end

@@ -22,7 +22,7 @@ table.table
           '  v
           = fixture.away.name
         td class=correct_team(fixture, fixture.pick(current_user).try(:pick))
-          = current_selection(fixture, fixture.pick(current_user).try(:pick))
+          = current_selection(fixture, fixture.pick(current_user).try(:pick), force: fixture.at < Time.now.utc)
         td.text-center class=correct_team(fixture, fixture.picks.average(:pick))
           - if fixture.at < Time.now.utc
             = current_selection(fixture, fixture.picks.average(:pick), force: true)

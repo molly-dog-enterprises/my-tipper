@@ -15,6 +15,7 @@
 //= require ./jquery-ui.min
 
 //= require ./picks
+//= require ./next-game-in
 
 //= require jquery.cookie
 //= require jstz

@@ -20,8 +20,14 @@ $(function () {
       max: 100,
       step: 1,
       slide: function (event, ui) {
+
+        if(ui.value === 0) {
+          _this.find(".pick").addClass('next-game-in')
+        } else {
+          _this.find(".pick").removeClass('next-game-in')
+        }
         _this.find(".amount").val(ui.value);
-        _this.find(".pick").html()
+        _this.find(".pick").html();
         setPick();
       }
     });

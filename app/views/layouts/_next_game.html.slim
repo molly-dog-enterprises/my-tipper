@@ -6,32 +6,3 @@
     = fixture.away.name
     '  -
     .next-game-in style='display: inline-block' data={at: fixture.at.to_i}
-
-
-javascript:
-  Number.prototype.toHHMMSS = function () {
-    var days = Math.floor(this / (3600 * 24));
-    var hours = Math.floor((this - (days * 3600 * 24)) / 3600);
-    var minutes = Math.floor((this - (hours * 3600)) / 60);
-    var seconds = Math.floor(this - (hours * 3600) - (minutes * 60));
-
-    if(days > 0) {
-      return days + ' day(s) ' + hours + ' hour(s)';
-    } else if (hours > 0) {
-      return hours + ' hour(s) ' + minutes + ' minute(s)';
-    } else {
-      return minutes + ' minute(s) ' + seconds + ' second(s)';
-    }
-  };
-
-  function updateNextGameInterval() {
-    var d = new Date(),
-            f = parseInt($('.next-game-in').data('at')) * 1000;
-    if (d.getTime() > f) {
-      $('.next-game-in').html('Already started')
-    } else {
-      $('.next-game-in').html(((f - d.getTime()) / 1000).toHHMMSS())
-    }
-  }
-  setInterval(updateNextGameInterval, 1000);
-  updateNextGameInterval();
