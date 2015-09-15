@@ -1,12 +1,15 @@
 #navigation
 
   ul.align-right
-    - if current_user
+    - if current_admin
+      li= "ADMIN"
+      - if current_user
+        li= current_user.email
+        li= link_to 'Clear user', root_path(clear_e: true, event: params[:event])
+      li= link_to 'logout', destroy_admin_session_path(event: params[:event]), method: 'delete'
+    - elsif current_user
       li= "Hi #{current_user.name}"
       li= link_to 'logout', destroy_user_session_path(event: params[:event]), method: 'delete'
-    - elsif current_admin
-      li= "ADMIN"
-      li= link_to 'logout', destroy_admin_session_path(event: params[:event]), method: 'delete'
     - else
       li= link_to 'Admin', new_admin_session_path(event: params[:event])
       li= link_to 'Sign in', new_user_session_path(event: params[:event])
