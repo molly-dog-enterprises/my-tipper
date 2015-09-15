@@ -1,6 +1,12 @@
 - content_for :header do
   | Results
 
+#nav
+  = link_to "Previous match", fixture_path(@fixture.previous, event: event), class: 'prev' if @fixture.previous
+  - if @fixture.previous && @fixture.next
+    '  |
+  = link_to "Next match", fixture_path(@fixture.next, event: event), class: 'next' if @fixture.next
+
 - if @fixture.at > Time.now.utc
   h3 Unable to display match result for future dated matches
 - else
@@ -8,8 +14,7 @@
     tr
       th Average Pick
       td.text-center class=correct_team(@fixture, @fixture.picks.average(:pick))
-        - if @fixture.at < Time.now.utc
-          = current_selection(@fixture, @fixture.picks.average(:pick), force: true)
+        = current_selection(@fixture, @fixture.picks.average(:pick), force: true)
     tr
       th Result
       td.text-center= current_selection(@fixture, @fixture.result, force: true) if @fixture.result

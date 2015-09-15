@@ -2,10 +2,11 @@
 
   ul.align-right
     - if current_admin
-      li= "ADMIN"
       - if current_user
         li= current_user.email
         li= link_to 'Clear user', root_path(clear_e: true, event: params[:event])
+      - else
+        li= "ADMIN"
       li= link_to 'logout', destroy_admin_session_path(event: params[:event]), method: 'delete'
     - elsif current_user
       li= "Hi #{current_user.name}"
@@ -23,11 +24,11 @@
       li= link_to 'Picks', picks_path(event: params[:event])
       li= link_to 'Leagues', leagues_path(event: params[:event])
       li
-        = link_to 'Results', results_path(event: params[:event])
+        = link_to 'Results', leaderboard_results_path(event: params[:event])
         .second-level-menu
           ul
-            li= link_to 'Points breakdown', results_path(event: params[:event])
-            li= link_to 'Match', fixture_path(Fixture.last_fixture, event: params[:event])
             li= link_to 'Leader board', leaderboard_results_path(event: params[:event])
+            li= link_to 'Points breakdown', results_path(event: params[:event])
+            li= link_to 'Match breakdown', fixture_path(Fixture.last_fixture, event: params[:event])
     - if current_admin
       li= link_to 'Team wrappers', team_wrappers_path(event: params[:event])

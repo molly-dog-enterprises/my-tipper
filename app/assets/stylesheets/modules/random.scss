@@ -18,3 +18,32 @@
     }
   }
 }
+
+#nav {
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  padding-bottom: 10px;
+
+  a, a:visited {
+    color: black;
+  }
+
+  a:hover {
+    color: #666;
+  }
+
+  .next {
+    &:after {
+      padding-left: 3px;
+      content: '\25B6';
+    }
+  }
+  .prev {
+    &:before {
+      content: '\25C0';
+      padding-right: 3px;
+    }
+  }
+
+}

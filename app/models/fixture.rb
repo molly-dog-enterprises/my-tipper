@@ -14,6 +14,14 @@ class Fixture < ActiveRecord::Base
     picks.detect{ |p| p.user_id == user.id } || Pick.new
   end
 
+  def next
+    Fixture.where(['at > ?', at]).where(event: event).order(:at).first
+  end
+
+  def previous
+    Fixture.where(['at < ?', at]).where(event: event).order('at DESC').first
+  end
+
   def update_result(result)
     Fixture.transaction do
       self.result = result
