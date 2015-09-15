@@ -1,5 +1,6 @@
 class ResultsController < ApplicationController
   before_action :authenticate_user!
+  skip_before_action :authenticate_user!, if: :current_admin
 
   def index
     fixtures = Fixture.includes({home: :team}, {away: :team}, :picks).order(:at)

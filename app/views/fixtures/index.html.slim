@@ -29,6 +29,6 @@ br
           - if current_admin
             td
               - if fixture.at < Time.now.utc
-                = text_field_tag "fixture[fix_#{fixture.id}]", fixture.result
+                = text_field_tag "fixtures[fix_#{fixture.id}]", fixture.result
               - else
                 ' Pending

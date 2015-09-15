@@ -5,7 +5,7 @@
     '  v
     = fixture.away.name
     '  -
-    #next-game-in style='display: inline-block' data={at: fixture.at.to_i}
+    .next-game-in style='display: inline-block' data={at: fixture.at.to_i}
 
 
 javascript:
@@ -26,11 +26,11 @@ javascript:
 
   function updateNextGameInterval() {
     var d = new Date(),
-            f = parseInt($('#next-game-in').data('at')) * 1000;
+            f = parseInt($('.next-game-in').data('at')) * 1000;
     if (d.getTime() > f) {
-      $('#next-game-in').html('Already started')
+      $('.next-game-in').html('Already started')
     } else {
-      $('#next-game-in').html(((f - d.getTime()) / 1000).toHHMMSS())
+      $('.next-game-in').html(((f - d.getTime()) / 1000).toHHMMSS())
     }
   }
   setInterval(updateNextGameInterval, 1000);

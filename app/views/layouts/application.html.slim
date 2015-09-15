@@ -10,7 +10,7 @@ head
   = stylesheet_link_tag "application", media: "all"
   = csrf_meta_tags
 
-body.container
+body.container class="#{"admin" if current_admin} #{"user" if current_user}"
   header
     .mde-image
     h1

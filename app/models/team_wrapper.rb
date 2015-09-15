@@ -1,8 +1,13 @@
 class TeamWrapper < ActiveRecord::Base
   belongs_to :team
-  has_many :fixtures
-
   delegate :short_name, to: :team, allow_nil: true
+
+  scope :for_event, ->(event) {
+    joins(%{
+      JOIN fixtures
+        ON fixtures.home_id = team_wrappers.id OR fixtures.away_id = team_wrappers.id
+    }).where(['fixtures.event = ?', event])
+  }
 
   def name
     names = [

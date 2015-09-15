@@ -3,7 +3,7 @@ class TeamWrappersController < ApplicationController
 
   def index
     wrappers = TeamWrapper.where.not(name: nil)
-    wrappers = wrappers.includes(:fixtures).where(fixtures: {event: event})
+    wrappers = wrappers.for_event(event).order("fixtures.at")
     @wrappers_by_round = wrappers.group_by {|w| w.fixture.round }
   end
 
