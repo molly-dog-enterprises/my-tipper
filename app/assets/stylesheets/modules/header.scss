@@ -31,12 +31,14 @@ header {
 
 
 #next-game {
+  position: fixed;
+  bottom: 0;
   height: 30px;
   padding: 4px 0;
-  background-color: #a3f8ff;
+  background-color: #111;
   color: #9b9daa;
   font-weight: bold;
   padding: 8px 10px;
-  margin-bottom: 5px;
   text-align: right;
+  width: 980px;
 }

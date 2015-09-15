@@ -18,7 +18,6 @@ body.container class="#{"admin" if current_admin} #{"user" if current_user}"
       - if content_for :header
         '  -
         = yield :header
-  = render 'layouts/next_game'
   = render 'layouts/navigation'
   /p.notice= notice
   p.alert= alert
@@ -28,3 +27,4 @@ body.container class="#{"admin" if current_admin} #{"user" if current_user}"
       = yield
     .one-fifth.column
       = render 'layouts/side_nav'
+  = render 'layouts/next_game'

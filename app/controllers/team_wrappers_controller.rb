@@ -12,8 +12,8 @@ class TeamWrappersController < ApplicationController
       next if value.blank?
 
       wrapper_id = wrapper.split('_').last.to_i
-
-      TeamWrapper.find(wrapper_id).update_attributes(team_id: value)
+      tw = TeamWrapper.find(wrapper_id)
+      tw.update_attribute(:team_id, value.to_i)
     end
     redirect_to team_wrappers_path(event: params[:event])
   end

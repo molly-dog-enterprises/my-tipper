@@ -32,3 +32,9 @@
             li= link_to 'Match breakdown', fixture_path(Fixture.last_fixture, event: params[:event])
     - if current_admin
       li= link_to 'Team wrappers', team_wrappers_path(event: params[:event])
+    li
+      = "RWC #{event}"
+      .second-level-menu
+        ul
+          li= link_to "RWC 2015", root_path
+          li= link_to "RWC 2011", root_path(event: '2011')
