@@ -1,5 +1,3 @@
-h3 Playing is as easy..
-
 .tile-container
   .tile.position-1
     .pos 1
@@ -16,3 +14,49 @@ h3 Playing is as easy..
     .header Get the lowest score
     .img
 
+#how-to
+  H3 How to play
+
+  p
+    ' On the
+    = link_to "picks", picks_path
+    '  screen select the winning team and margin using the slider provided.
+
+  .slider-img
+
+  H3 Scoring
+
+  p Your score depends on picks the correct team and margin.
+
+
+  div
+    .bold The correct team
+    '  - If you choose the correct team you will be awarded the
+    ' number of point you where out by in the goal difference.
+    .correct-team
+
+
+
+  p
+    .bold The wrong team
+    '  - Choosing the wrong team will give you a 5 point penalty.
+
+  .wrong-team
+
+
+  p
+    .bold On the nose
+    '  - Getting the points difference exactly right will give you a 10 point bonus (negative 10 points).
+
+  .exact-difference
+
+
+  p
+    .bold Failing to pick a team
+    '  -  Failing to pick a winner will result in the score difference plus a 20 point penalty.
+
+  h3 Leagues
+
+  p Leagues will enable you to have mini-competitions against you friends and co-workers and can easily be created.
+  p Once you have created a league view the "Invite URL" and share this with you friends.
+  p This will automatically add them to you league when the sign up.

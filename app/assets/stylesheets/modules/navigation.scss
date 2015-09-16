@@ -37,6 +37,7 @@
 #navigation {
   /* Menu Styles */
   .second-level-menu {
+    z-index: 100000;
     position: absolute;
     top: 28px;
     left: 0;

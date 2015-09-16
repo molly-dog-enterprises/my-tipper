@@ -3,7 +3,7 @@ class FixturesController < ApplicationController
 
   def index
     fixtures = Fixture.includes({home: :team}, {away: :team}).order(:at)
-    fixtures = fixtures.where(paramify)
+    fixtures = fixtures.where(event: event)
     fixtures = fixtures.where(['at > ?', Time.now.utc]) unless params[:display] == 'all'
 
     @fixtures_by_round = fixtures.all.group_by(&:round)

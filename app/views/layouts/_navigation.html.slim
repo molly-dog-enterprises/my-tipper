@@ -34,7 +34,7 @@
         .second-level-menu
           ul
             li= link_to 'Create a league', new_league_path(paramify)
-            li= link_to 'Join a league', leagues_path(paramify)
+            li= link_to 'Leagues', leagues_path(paramify)
             - if current_user.non_event_leagues.any?
               li= link_to 'Show all', current_path(league: nil)
             - current_user.non_event_leagues.each do |league|

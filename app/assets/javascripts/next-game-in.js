@@ -15,7 +15,6 @@ Number.prototype.toHHMMSS = function () {
 
 $(function () {
   function updateNextGameInterval() {
-    console.log('run me..')
     $.each($('.next-game-in'), function () {
       var _this = $(this),
         d = new Date(),

@@ -62,6 +62,21 @@ $box-size: 240px;
       left: $box-size * 2;
       top: 20px;
       transform: rotate(-3deg);
+
+      .img:before {
+        content: '';
+        background: image-url("leaderboard");
+        background-size: cover;
+        display: block;
+        width: 200px;
+        height: 130px;
+        -webkit-filter: blur(1px);
+        -moz-filter: blur(1px);
+        -o-filter: blur(1px);
+        -ms-filter: blur(1px);
+        filter: blur(1px);
+        margin: 35px 0;
+      }
     }
 
     .pos {
