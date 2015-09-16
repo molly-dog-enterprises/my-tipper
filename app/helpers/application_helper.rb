@@ -14,4 +14,18 @@ module ApplicationHelper
     return 'incorrect-pick' if fixture.result == 0 || pick == 0
     pick.to_f / fixture.result > 0 ? 'correct-pick' : 'incorrect-pick'
   end
+
+  def current_path(changes={})
+    uri = URI(request.env['REQUEST_URI'])
+    existing_params = URI.decode_www_form(uri.query || '')
+    new_params = changes.each_with_object(Hash[existing_params]) do |(k, v), h|
+      if v.blank?
+        h.delete(k.to_s)
+      else
+        h[k.to_s] = v
+      end
+    end
+    uri.query       = URI.encode_www_form(new_params.to_a)
+    uri.to_s
+  end
 end

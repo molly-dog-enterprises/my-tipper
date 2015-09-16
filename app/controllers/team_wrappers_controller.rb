@@ -15,6 +15,6 @@ class TeamWrappersController < ApplicationController
       tw = TeamWrapper.find(wrapper_id)
       tw.update_attribute(:team_id, value.to_i)
     end
-    redirect_to team_wrappers_path(event: params[:event])
+    redirect_to team_wrappers_path(paramify)
   end
 end

@@ -5,9 +5,13 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :only_one_login
-  helper_method :event
+  helper_method :event, :paramify, :league
 
   protected
+
+  def paramify(vals={})
+    {event: event, league: params[:league]}.merge(vals)
+  end
 
   def current_user(over_ride: true)
     super() || (over_ride && over_ride_user)
@@ -28,11 +32,15 @@ class ApplicationController < ActionController::Base
     params[:event].presence || '2015'
   end
 
+  def league
+    params[:league].presence || event
+  end
+
   def only_one_login
     if current_user(over_ride: false) && current_admin
       sign_out_all_scopes
       flash[:alert] = "You can only be logged in as a sign user type are any one time"
-      redirect_to root_path(event: params[:event])
+      redirect_to root_path(paramify)
     end
   end
 

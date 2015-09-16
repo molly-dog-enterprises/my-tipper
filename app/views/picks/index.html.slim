@@ -2,11 +2,11 @@
   | Picks
 
 .btn-group
-  = link_to 'Future games', picks_path(event: params[:event]), class: "btn #{'selected' unless params[:display] == 'all'}", method: 'get'
-  = link_to 'All games', picks_path(display: 'all', event: params[:event]), class: "btn #{'selected' if params[:display] == 'all'}", method: 'get'
+  = link_to 'Future games', picks_path(paramify(display: nil)), class: "btn #{'selected' unless params[:display] == 'all'}", method: 'get'
+  = link_to 'All games', picks_path(paramify(display: 'all')), class: "btn #{'selected' if params[:display] == 'all'}", method: 'get'
 br
 br
-= form_tag picks_path(event: params[:event]) do
+= form_tag picks_path(paramify) do
   table.table#picks
     - if @fixtures_by_round.empty?
       h3 No upcoming games to select picks for..

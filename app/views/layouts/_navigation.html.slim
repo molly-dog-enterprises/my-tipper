@@ -4,37 +4,46 @@
     - if current_admin
       - if current_user
         li= current_user.email
-        li= link_to 'Clear user', root_path(clear_e: true, event: params[:event])
+        li= link_to 'Clear user', root_path(paramify(clear_e: true))
       - else
         li= "ADMIN"
-      li= link_to 'logout', destroy_admin_session_path(event: params[:event]), method: 'delete'
+      li= link_to 'logout', destroy_admin_session_path(paramify), method: 'delete'
     - elsif current_user
       li= "Hi #{current_user.name}"
-      li= link_to 'logout', destroy_user_session_path(event: params[:event]), method: 'delete'
+      li= link_to 'logout', destroy_user_session_path(paramify), method: 'delete'
     - else
-      li= link_to 'Admin', new_admin_session_path(event: params[:event])
-      li= link_to 'Sign in', new_user_session_path(event: params[:event])
-      li= link_to 'Sign up', new_user_registration_path(event: params[:event])
+      li= link_to 'Admin', new_admin_session_path(paramify)
+      li= link_to 'Sign in', new_user_session_path(paramify)
+      li= link_to 'Sign up', new_user_registration_path(paramify)
 
   ul.top-level-menu
-    li= link_to 'How to play', root_path(event: params[:event])
-    li= link_to 'Fixtures', fixtures_path(event: params[:event])
+    li= link_to 'How to play', root_path(paramify)
+    li= link_to 'Fixtures', fixtures_path(paramify)
 
     - if current_user
-      li= link_to 'Picks', picks_path(event: params[:event])
-      li= link_to 'Leagues', leagues_path(event: params[:event])
+      li= link_to 'Picks', picks_path(paramify)
       li
-        = link_to 'Results', leaderboard_results_path(event: params[:event])
+        span.drop-down Results
         .second-level-menu
           ul
-            li= link_to 'Leader board', leaderboard_results_path(event: params[:event])
-            li= link_to 'Points breakdown', results_path(event: params[:event])
-            li= link_to 'Match breakdown', fixture_path(Fixture.last_fixture, event: params[:event])
+            li= link_to 'Leader board', leaderboard_results_path(paramify)
+            li= link_to 'Points breakdown', results_path(paramify)
+            li= link_to 'Match breakdown', fixture_path(Fixture.last_fixture, paramify)
+      li
+        span.drop-down Leagues
+        .second-level-menu
+          ul
+            li= link_to 'Create a league', new_league_path(paramify)
+            li= link_to 'Join a league', leagues_path(paramify)
+            - if current_user.non_event_leagues.any?
+              li= link_to 'Show all', current_path(league: nil)
+            - current_user.non_event_leagues.each do |league|
+              li= link_to league.name, current_path(league: league.name)
     - if current_admin
-      li= link_to 'Team wrappers', team_wrappers_path(event: params[:event])
+      li= link_to 'Team wrappers', team_wrappers_path(paramify)
     li
-      = "RWC #{event}"
+      span.drop-down = "RWC #{event}"
       .second-level-menu
         ul
-          li= link_to "RWC 2015", root_path
-          li= link_to "RWC 2011", root_path(event: '2011')
+          li= link_to "RWC 2015", current_path(event: nil)
+          li= link_to "RWC 2011", current_path(event: '2011')

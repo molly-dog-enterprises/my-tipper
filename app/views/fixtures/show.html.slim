@@ -2,10 +2,10 @@
   | Results
 
 #nav
-  = link_to "Previous match", fixture_path(@fixture.previous, event: event), class: 'prev' if @fixture.previous
+  = link_to "Previous match", fixture_path(@fixture.previous, paramify), class: 'prev' if @fixture.previous
   - if @fixture.previous && @fixture.next
     '  |
-  = link_to "Next match", fixture_path(@fixture.next, event: event), class: 'next' if @fixture.next
+  = link_to "Next match", fixture_path(@fixture.next, paramify), class: 'next' if @fixture.next
 
 - if @fixture.at > Time.now.utc
   h3 Unable to display match result for future dated matches

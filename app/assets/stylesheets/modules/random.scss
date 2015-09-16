@@ -47,3 +47,20 @@
   }
 
 }
+
+.highlight {
+  background-color: #c9ff00;
+}
+
+.drop-down {
+  &:after {
+    padding-left: 3px;
+    color: white;
+    content: '\25BC';
+    font-size: 12px;
+
+    &:hover {
+      color: red;
+    }
+  }
+}

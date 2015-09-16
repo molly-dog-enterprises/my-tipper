@@ -19,6 +19,6 @@ class PicksController < ApplicationController
       pick = Pick.find_or_initialize_by(fixture_id: fixture_id, user_id: current_user.id)
       pick.update_attributes(pick: value.to_i)
     end
-    redirect_to picks_path(event: params[:event])
+    redirect_to picks_path(paramify)
   end
 end

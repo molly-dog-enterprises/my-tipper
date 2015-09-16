@@ -2,6 +2,7 @@ require 'securerandom'
 
 class League < ActiveRecord::Base
   has_many :players
+  has_many :users, through: :players
 
   validates_uniqueness_of :name
 

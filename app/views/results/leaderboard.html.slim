@@ -35,7 +35,7 @@
       th Position change
     - @users.each do |user|
       tr
-        td= link_to user.name, results_path(user: user.id, event: event)
+        td= link_to user.name, results_path(paramify(user: user.id))
         td.text-center= @points[user.id]
         td.text-center= @points[user.id] - @prev_points[user.id]
         td.text-center= @points.values.index(@points[user.id]) + 1

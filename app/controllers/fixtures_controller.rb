@@ -1,9 +1,9 @@
 class FixturesController < ApplicationController
-  before_action :authenticate_admin!, except: [:index]
+  before_action :authenticate_admin!, except: [:index, :show]
 
   def index
     fixtures = Fixture.includes({home: :team}, {away: :team}).order(:at)
-    fixtures = fixtures.where(event: event)
+    fixtures = fixtures.where(paramify)
     fixtures = fixtures.where(['at > ?', Time.now.utc]) unless params[:display] == 'all'
 
     @fixtures_by_round = fixtures.all.group_by(&:round)
@@ -17,12 +17,14 @@ class FixturesController < ApplicationController
 
       Fixture.find(fixture_id).update_result(value.to_i)
     end
-    redirect_to fixtures_path(event: params[:event])
+    redirect_to fixtures_path(paramify)
   end
 
   def show
     @fixture = Fixture.find(params[:id])
-    @points = Fixture.where(event: @fixture.event).where(['fixtures.at <= ?', @fixture.at]).includes(:picks).group(:user_id).order('sum(picks.score)').sum('picks.score')
-    @prev_points = Fixture.where(event: @fixture.event).where(['fixtures.at < ?', @fixture.at]).includes(:picks).group(:user_id).order('sum(picks.score)').sum('picks.score')
+    users = League.find_by!(name: params[:league] || event).users.all
+
+    @points = Fixture.where(event: @fixture.event, picks: {user_id: users.map(&:id)}).where(['fixtures.at <= ?', @fixture.at]).includes(:picks).group(:user_id).order('sum(picks.score)').sum('picks.score')
+    @prev_points = Fixture.where(event: @fixture.event, picks: {user_id: users.map(&:id)}).where(['fixtures.at < ?', @fixture.at]).includes(:picks).group(:user_id).order('sum(picks.score)').sum('picks.score')
   end
 end

@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
   validates_presence_of :name
 
   has_many :picks
+  has_many :players
+  has_many :non_event_leagues, -> { where(leagues: {event: false}) }, through: :players, source: :league
 end

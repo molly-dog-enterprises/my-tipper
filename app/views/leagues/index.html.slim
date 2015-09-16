@@ -2,7 +2,7 @@
   | Leagues
 
 .btn-group
-  = link_to 'Create league', new_league_path(event: params[:event]), class: "btn"
+  = link_to 'Create league', new_league_path(paramify), class: "btn"
 br
 br
 table.table
@@ -16,17 +16,17 @@ table.table
       th
   tbody
     - @leagues.each do |league|
-      tr
+      tr class=("highlight" if league.id == params[:highlight].to_i)
         td= league.name
         td.text-center= league.player_count
         td.text-center= "Yes" unless league.public?
         td.text-center= "Yes" if league.password.present?
         - if @members[league.id]
-          td= link_to "Leave", league_path(league, event: params[:event]), method: 'delete'
+          td= link_to "Leave", league_path(league, paramify), method: 'delete'
           td= link_to "Invite URL", '#', onclick: "$('#invite-#{league.id}').toggle(); return false;"
         - else
-          td= link_to "Join", league_path(league, event: params[:event]), method: 'put'
+          td= link_to "Join", league_path(league, paramify), method: 'put'
           td
       tr id="invite-#{league.id}" style='display: none'
         td colspan=6
-          = league_url(league.code, event: params[:event])
+          = league_url(league.code, paramify)

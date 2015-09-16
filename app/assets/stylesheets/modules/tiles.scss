@@ -41,6 +41,21 @@ $box-size: 240px;
       left: $box-size;
       top: 30px;
       transform: rotate(7deg);
+
+      .img:before {
+        content: '';
+        background: image-url("cartoon_tv");
+        background-size: cover;
+        display: block;
+        width: 150px;
+        height: 170px;
+        -webkit-filter: blur(2px);
+        -moz-filter: blur(2px);
+        -o-filter: blur(2px);
+        -ms-filter: blur(2px);
+        filter: blur(2px);
+        margin: 25px;
+      }
     }
 
     &.position-3 {
