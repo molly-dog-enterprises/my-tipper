@@ -14,6 +14,7 @@ table.table
       th Password
       th
       th
+      th
   tbody
     - @leagues.each do |league|
       tr class=("highlight" if league.id == params[:highlight].to_i)
@@ -24,9 +25,11 @@ table.table
         - if @members[league.id]
           td= link_to "Leave", league_path(league, paramify), method: 'delete'
           td= link_to "Invite URL", '#', onclick: "$('#invite-#{league.id}').toggle(); return false;"
+          td= link_to "View", league_path(league)
         - else
           td= link_to "Join", league_path(league, paramify), method: 'put'
           td
+          td
       tr id="invite-#{league.id}" style='display: none'
-        td colspan=6
+        td colspan=7
           = league_url(league.code)

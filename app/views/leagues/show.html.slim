@@ -1,0 +1,32 @@
+- content_for :header do
+  | Results
+
+
+table.table
+  tr
+    th League name
+    td= @league.name
+  tr
+    th Member
+    td.text-center
+      = @league.users.count
+  tr
+    th Private
+    td.text-center
+      = @league.public ? 'No' : 'Yes'
+  - if @league.password.present?
+    tr
+      th Password
+      td.text-center
+        = @league.password
+br
+table.table
+  tr
+    th Competitor
+    th Points
+    th Position
+  - @league.users.each do |user|
+    tr
+      td= link_to user.name, results_path(paramify(user: user.id))
+      td.text-center= @points[user.id]
+      td.text-center= @points.values.index(@points[user.id]) + 1

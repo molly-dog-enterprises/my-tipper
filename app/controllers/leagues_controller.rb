@@ -57,4 +57,9 @@ class LeaguesController < ApplicationController
     ).delete_all
     redirect_to leagues_path(paramify)
   end
+
+  def show
+    @league = League.includes(:users).find(params[:id])
+    @points = Fixture.where(event: event, picks: {user_id: @league.users.map(&:id)}).includes(:picks).group(:user_id).order('sum(picks.score)').sum('picks.score')
+  end
 end
