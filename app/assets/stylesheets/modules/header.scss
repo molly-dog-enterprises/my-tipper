@@ -31,6 +31,7 @@ header {
 
 
 #next-game {
+  z-index: 100000;
   position: fixed;
   bottom: 0;
   height: 30px;
