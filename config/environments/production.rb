@@ -78,4 +78,14 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = { host: 'my-tipper.herokuapp.com', port: 80 }
+
+  ActionMailer::Base.smtp_settings = {
+    :user_name => 'app41250678@heroku.com',
+    :password => 'jafb3ilj5023',
+    :domain => 'decoybecoy.com',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 end

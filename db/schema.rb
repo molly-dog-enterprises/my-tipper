@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150916064641) do
+ActiveRecord::Schema.define(version: 20150916210852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,17 @@ ActiveRecord::Schema.define(version: 20150916064641) do
   add_index "players", ["league_id"], name: "index_players_on_league_id", using: :btree
   add_index "players", ["user_id"], name: "index_players_on_user_id", using: :btree
 
+  create_table "sents", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "fixture_id"
+    t.string   "email_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "sents", ["fixture_id"], name: "index_sents_on_fixture_id", using: :btree
+  add_index "sents", ["user_id"], name: "index_sents_on_user_id", using: :btree
+
   create_table "team_wrappers", force: :cascade do |t|
     t.string   "name"
     t.string   "image"
@@ -124,5 +135,7 @@ ActiveRecord::Schema.define(version: 20150916064641) do
   add_foreign_key "picks", "users"
   add_foreign_key "players", "leagues"
   add_foreign_key "players", "users"
+  add_foreign_key "sents", "fixtures"
+  add_foreign_key "sents", "users"
   add_foreign_key "team_wrappers", "teams"
 end

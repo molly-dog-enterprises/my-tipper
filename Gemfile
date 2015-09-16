@@ -47,3 +47,4 @@ gem 'slim'
 gem 'simple_form'
 gem 'browser-timezone-rails'
 gem "airbrake"
+gem 'sendgrid-ruby'
