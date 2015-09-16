@@ -35,6 +35,15 @@
 }
 
 #navigation {
+  .filters {
+    border-bottom: solid 1px #555;
+    border-top: solid 1px #555;
+  }
+
+  .filter {
+
+  }
+
   /* Menu Styles */
   .second-level-menu {
     z-index: 100000;
@@ -51,6 +60,7 @@
   }
 
   .second-level-menu ul > li {
+    display: block;
     position: relative;
     //height: 30px;
     border-right: none;

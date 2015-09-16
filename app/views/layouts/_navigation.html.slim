@@ -34,11 +34,12 @@
         .second-level-menu
           ul
             li= link_to 'Create a league', new_league_path(paramify)
-            li= link_to 'Leagues', leagues_path(paramify)
+            li= link_to 'All Leagues', leagues_path(paramify)
             - if current_user.non_event_leagues.any?
-              li= link_to 'Show all', current_path(league: nil)
+              li.filters Filters
+              li.filter= link_to 'All players', current_path(league: nil)
             - current_user.non_event_leagues.each do |league|
-              li= link_to league.name, current_path(league: league.name)
+              li.filter= link_to "#{league.name} players", current_path(league: league.name)
     - if current_admin
       li= link_to 'Team wrappers', team_wrappers_path(paramify)
     li
