@@ -46,4 +46,4 @@ gem 'devise'
 gem 'slim'
 gem 'simple_form'
 gem 'browser-timezone-rails'
-
+gem "airbrake"
