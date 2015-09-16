@@ -7,7 +7,7 @@ class AddEventFlagToLeague < ActiveRecord::Migration
 
     ['2015', '2011', 'test'].each do |event|
       l = League.create!(name: event, event: true).id
-      users = Fixture.where(paramify).joins(:picks).where.not(picks: {pick: 0}).select('DISTINCT picks.user_id').map(&:user_id)
+      users = Fixture.where(event: event).joins(:picks).where.not(picks: {pick: 0}).select('DISTINCT picks.user_id').map(&:user_id)
       users.each {|u| Player.create!(league_id: l, user_id: u)}
     end
   end
