@@ -3,7 +3,7 @@ require 'securerandom'
 class League < ActiveRecord::Base
   has_many :players
   has_many :users, through: :players
-  has_many :fixtures, foreign_key: :event, primary_key: :event
+  has_many :fixtures, foreign_key: :event, primary_key: :name
 
   validates_uniqueness_of :name
 
