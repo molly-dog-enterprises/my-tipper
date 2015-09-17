@@ -7,10 +7,13 @@
         li= link_to 'Clear user', root_path(paramify(clear_e: true))
       - else
         li= "ADMIN"
-      li= link_to 'logout', destroy_admin_session_path(paramify), method: 'delete'
+      li= link_to 'Logout', destroy_admin_session_path(paramify), method: 'delete'
     - elsif current_user
       li= "Hi #{current_user.name}"
-      li= link_to 'logout', destroy_user_session_path(paramify), method: 'delete'
+      li= link_to 'Logout', destroy_user_session_path(paramify), method: 'delete'
+      li
+        = link_to edit_user_registration_path(paramify) do
+          .settings
     - else
       li= link_to 'Admin', new_admin_session_path(paramify)
       li= link_to 'Sign in', new_user_session_path(paramify)
