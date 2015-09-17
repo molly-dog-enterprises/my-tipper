@@ -5,7 +5,7 @@
 table.table
   tr
     th League name
-    td= @league.name
+    td= @league.event ? "World Cup #{@league.name}" : @league.name
   tr
     th Member
     td.text-center
@@ -29,4 +29,4 @@ table.table
     tr
       td= link_to user.name, results_path(paramify(user: user.id))
       td.text-center= @points[user.id] || 0
-      td.text-center= (@points.values.index(@points[user.id]) || 0) + 1 
+      td.text-center= (@points.values.index(@points[user.id]) || 0) + 1
