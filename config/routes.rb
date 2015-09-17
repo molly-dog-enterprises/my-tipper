@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     collection { get :leaderboard }
   end
   resources :team_wrappers
-  resources :leagues
+  resources :leagues do
+    member { get :view }
+  end
 
   resource :user do
     post :fixtures

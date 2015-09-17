@@ -28,5 +28,5 @@ table.table
   - @league.users.each do |user|
     tr
       td= link_to user.name, results_path(paramify(user: user.id))
-      td.text-center= @points[user.id]
-      td.text-center= @points.values.index(@points[user.id]) + 1
+      td.text-center= @points[user.id] || 0
+      td.text-center= (@points.values.index(@points[user.id]) || 0) + 1 
