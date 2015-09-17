@@ -64,3 +64,32 @@
     }
   }
 }
+
+.access {
+  padding: 0 50px;
+  line-height: 35px;
+
+  input {
+    width: 300px;
+  }
+
+  input[type=checkbox] {
+    width: auto;
+  }
+
+  .btn {
+    margin-top: 10px;
+  }
+
+  &:before {
+    content: '';
+    background-image: image_url('mde');
+    box-shadow: 0 0 4px 4px #AADAE3 inset;
+    width: 240px;
+    height: 240px;
+    display: inline-block;
+    background-size: cover;
+    float: right;
+    margin-top: 40px;
+  }
+}
