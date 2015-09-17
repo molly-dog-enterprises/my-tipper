@@ -6,11 +6,11 @@ class LeaguesController < ApplicationController
         LEFT JOIN players
           ON players.league_id = leagues.id
       })
-      .select(:id, :name, :password, :public, :code, 'count(players.id) as player_count')
+      .select(:id, :name, :password, :public, :code, 'count(players.id) as player_count', :event)
       .group(:id, :name, :password, :public, :code)
+      .where(["not event or name = ?", event])
       .where(['public is true or exists(select from players p where p.league_id = leagues.id and p.user_id = ?)', current_user.id])
-      .where(event: false)
-      .order('count(players.id) DESC, name')
+      .order('event DESC, count(players.id) DESC, name')
       .having('count(players.id) > 0')
       .limit(10)
     @members = Player.where(user_id: current_user.id).group(:league_id).maximum(:user_id)

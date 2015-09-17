@@ -18,11 +18,15 @@ table.table
   tbody
     - @leagues.each do |league|
       tr class=("highlight" if league.id == params[:highlight].to_i)
-        td= league.name
+        td= league.event ? "World Cup #{league.name}" : league.name
         td.text-center= league.player_count
         td.text-center= "Yes" unless league.public?
         td.text-center= "Yes" if league.password.present?
-        - if @members[league.id]
+        - if league.event?
+          td
+          td
+          td
+        - elsif @members[league.id]
           td= link_to "Leave", league_path(league, paramify), method: 'delete'
           td= link_to "Invite URL", '#', onclick: "$('#invite-#{league.id}').toggle(); return false;"
           td= link_to "View", view_league_path(league)
@@ -30,6 +34,7 @@ table.table
           td= link_to "Join", league_path(league, paramify), method: 'put'
           td
           td
-      tr id="invite-#{league.id}" style='display: none'
-        td colspan=7
-          = league_url(league.code)
+      - if !league.event? && @members[league.id]
+        tr id="invite-#{league.id}" style='display: none'
+          td colspan=7
+            = league_url(league.code)
