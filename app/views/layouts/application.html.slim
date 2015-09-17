@@ -1,15 +1,14 @@
 doctype html
 html lang="en"
 head
-  meta charset="utf-8"
-
   /= javascript_include_tag "local_cdn/react-0.12.2", "local_cdn/JSXTransformer-0.12.2", "local_cdn/fluxxor"
   /javascript:
   /  window.MDE = {};
   = javascript_include_tag "application"
   = stylesheet_link_tag "application", media: "all"
   = csrf_meta_tags
-
+  meta property="og:image" content=image_url('mde')
+  meta charset="utf-8"
 body.container class="#{"admin" if current_admin} #{"user" if current_user}"
   header
     .mde-image
