@@ -6,27 +6,47 @@
       <%= devise_error_messages! %>
 
       <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true %>
+      </div>
+
+      <div class="field">
         <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true %>
+        <%= f.email_field :email, autofocus: 'off' %>
       </div>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
 
-      <div class="field">
-        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-        <%= f.password_field :password, autocomplete: "off" %>
+      <div id='show-password-action' class="actions">
+        <%= f.submit "Change password", class: 'btn', onclick: "$('#password-fields').show(); $('#show-password-action').hide(); return false" %>
+      </div>
+
+      <div id="password-fields" style="display: none">
+
+        <div class="field">
+          <%= f.label :current_password %> <br />
+          <%= f.password_field :current_password, autocomplete: "off" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password, 'New password' %> <br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
       </div>
 
       <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
-      </div>
+        <%= f.label :email_notification do %>
+            <%= f.check_box :email_notification %>
+            I am happy to receive email notifications
+        <% end %>
 
-      <div class="field">
-        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-        <%= f.password_field :current_password, autocomplete: "off" %>
       </div>
 
       <div class="actions">
