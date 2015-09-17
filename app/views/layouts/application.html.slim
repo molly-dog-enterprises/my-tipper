@@ -1,9 +1,6 @@
 doctype html
 html lang="en"
 head
-  /= javascript_include_tag "local_cdn/react-0.12.2", "local_cdn/JSXTransformer-0.12.2", "local_cdn/fluxxor"
-  /javascript:
-  /  window.MDE = {};
   = javascript_include_tag "application"
   = stylesheet_link_tag "application", media: "all"
   = csrf_meta_tags
@@ -11,7 +8,7 @@ head
   meta charset="utf-8"
   meta property="og:type"   content="article"
   meta property="og:url" content=root_url
-  meta property="og:image" content=image_url('mde')
+  meta property="og:image" content=asset_path('mde')
   meta property="og:title"  content="My Tipper - World Cup Rugby"
 body.container class="#{"admin" if current_admin} #{"user" if current_user}"
   header
