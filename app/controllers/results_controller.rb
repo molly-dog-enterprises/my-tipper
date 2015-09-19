@@ -41,7 +41,7 @@ class ResultsController < ApplicationController
       @points = Fixture.where(event: @fixture.event, picks: {user_id: @users.map(&:id)}).where(['fixtures.at <= ?', @fixture.at]).includes(:picks).group(:user_id).order('sum(picks.score)').sum('picks.score')
       @prev_points = Fixture.where(event: @fixture.event, picks: {user_id: @users.map(&:id)}).where(['fixtures.at < ?', @fixture.at]).includes(:picks).group(:user_id).order('sum(picks.score)').sum('picks.score')
 
-      @users = @users.sort_by {|u| @points.keys.index(u.id) }
+      @users = @users.sort_by {|u| @points.keys.index(u.id) || 0 }
 
     end
   end

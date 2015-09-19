@@ -4,9 +4,11 @@ class Fixture < ActiveRecord::Base
   has_many :picks
 
   validate :allowed_to_edit_result_value?
-  def self.last_fixture
+  def self.last_fixture(event)
     where(['at < ?', Time.now])
     .order('at desc')
+    .where(event: event)
+      .where.not(result: nil)
     .first
   end
 
