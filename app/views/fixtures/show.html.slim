@@ -40,8 +40,8 @@
           = current_selection(@fixture, pick.pick, force: @fixture.at < Time.now.utc)
         td.text-center= pick.score
         td.text-center= @points[pick.user_id]
-        td.text-center= @points.values.index(@points[pick.user_id]) + 1
-        - change = @points.values.index(@points[pick.user_id]) - (@prev_points.values.index(@prev_points[pick.user_id]) || 0)
+        td.text-center= @points[pick.user_id] ? @points.values.index(@points[pick.user_id]) + 1 : nil
+        - change = @points.values.index(@points[pick.user_id]) - (@prev_points.values.index(@prev_points[pick.user_id]) || 0) if @points[pick.user_id]
         td.text-center.place-change
           span class=(change == 0 ? '' : (change > 0 ? 'down' : 'up'))
-            = change.abs
+            = change.abs if change
