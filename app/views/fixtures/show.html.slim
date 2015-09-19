@@ -34,7 +34,7 @@
       th Position change
     - League.find_by(name: league).users.order('users.name').each do |user|
       - pick = Pick.includes(:fixture).find_by(user_id: user.id, fixture_id: @fixture.id)
-      - binding.pry unless pick
+      - next unless pick
       tr
         td= user.name
         /- binding.pry if user.name == 'David'
